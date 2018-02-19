@@ -1,0 +1,33 @@
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let row of tableData;  index as i">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{row.name}}</td>
+      <td>{{row.description}}</td>
+      <td>{{row.price}}</td>
+      <td>
+        <i (click)="openDialog(row)" class="fa fa-edit"  style="color:green;"></i>
+        <i (click) = "removeItem(row)" class="fa fa-trash" style="color:red;"></i>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div  class="text-center font-30">
+    <i  (click)="openNew()" class="fa fa-plus-square" style="font-size: 50px; color: rgba(0, 0, 255, 0.589);" ></i>
+    <span> Add New Item </span>
+</div>
+
+
+<!-- <div class="mat-app-background basic-container">
+    <app-edit-form></app-edit-form>
+  </div> -->
+
