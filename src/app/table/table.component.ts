@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EditFormComponent } from '../edit-form/edit-form.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { ItemServiceService } from '../item-service.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-table',
@@ -11,6 +12,7 @@ import { ItemServiceService } from '../item-service.service';
 export class TableComponent implements OnInit {
 
   tableData = [];
+  index: number;
 
   constructor(public dialog: MatDialog , public itemService: ItemServiceService) { }
 
@@ -23,6 +25,9 @@ export class TableComponent implements OnInit {
       "price": row.price }
     }, );
 
+    this.itemService.index = _.findIndex(this.itemService.tableData, function (Item) {
+      return Item.name === row.name;
+    });
     this.itemService.isNewForm = false;
 
     dialogRef.afterClosed().subscribe(result => {
@@ -48,11 +53,15 @@ export class TableComponent implements OnInit {
   }
 
   removeItem(row) {
-    this.itemService.tableData.splice(row.name,1);
+   let index = _.findIndex(this.itemService.tableData, function (Item) {
+      return Item.name === row.name;
+    });
+    this.itemService.tableData.splice(index,1);
   }
 
   ngOnInit() {
     this.tableData = this.itemService.tableData;
+    this.index = this.itemService.index;
   }
 
 }

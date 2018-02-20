@@ -24,11 +24,7 @@ export class EditFormComponent implements OnInit {
       this.itemService.tableData.push(item);
       this.closeDialog();
     } else {
-       let clonedItem = _.clone(item);
-      let index = _.findIndex(this.itemService.tableData, function (Item) {
-        return Item.name === self.data.name
-      });
-      this.itemService.tableData[index] = item;
+      this.itemService.tableData[this.itemService.index] = item;
       this.closeDialog();
     }
    

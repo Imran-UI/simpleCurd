@@ -6,6 +6,7 @@ export class ItemServiceService {
 
   tableData = [];
   isNewForm: boolean = false;
+  index: number;
 
   constructor() { 
     this.tableData = mockData;
