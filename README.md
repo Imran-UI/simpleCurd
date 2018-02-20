@@ -1,3 +1,6 @@
+#Demo ghp link 
+https://imran-ui.github.io/simpleCurd/
+
 # SimpleCurd
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
